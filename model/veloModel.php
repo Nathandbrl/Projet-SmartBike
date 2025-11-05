@@ -13,5 +13,23 @@ class VeloModel {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+
+
+    
+    public function getAll(): array
+    {
+        $stmt = $this->pdo->query("SELECT id, nom, prix, photo, description FROM velos ORDER BY date_ajout DESC");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    
+    public function findById(int $id): ?array
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM velos WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row ?: null;
+    }
 }
 

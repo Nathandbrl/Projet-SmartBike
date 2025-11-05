@@ -8,23 +8,34 @@ switch ($page) {
         $controller->index();
         break;
 
-    /* case 'produits':
-        require_once 'controller/produitsController.php';
-        $controller = new produitsController($pdo);
+    case 'produits':
+        require_once 'controller/produitController.php';
+        $controller = new produitController($pdo);
         $controller->index();
+        break; 
+
+    
+    case 'produit':
+        require_once 'controller/produitController.php';
+        if (isset($_GET['id'])) {
+            $ctrl = new ProduitController($pdo);
+            $ctrl->show((int)$_GET['id']);
+        } else {
+            header('Location: ?page=produits');
+        }
         break;
 
     case 'commander':
         require_once 'controller/commanderController.php';
-        $controller = new commanderController($pdo);
-        $controller->index();
+        $controller = new CommandeController($pdo);
+        $controller->form();
         break;
 
     case 'contact':
         require_once 'controller/contactController.php';
         $controller = new contactController($pdo);
         $controller->index();
-        break; */
+        break; 
 
     default:
         echo "<h2>Erreur 404 : page non trouvée</h2>";
