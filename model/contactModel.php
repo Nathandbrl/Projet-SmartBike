@@ -1,16 +1,18 @@
 <?php
-class Contacts {
+class ContactModel {
     private $pdo;
     public function __construct($pdo) {
         $this->pdo = $pdo;
     }
 
-    public fonction ajouterContacts($data){
-        $sql = "INSERT INTO contacts (nom, prénom, email, message) VALUES (:name, :email, :message)";
-        $data['nom'] . "', '" .
-        $data['prenom'] . "', '" .
-        $data['email'] . "', '" .
-        $data['message'] . "')";
-     $this->pdo->query($sql);
+    public function ajouterContact($data) {
+        $sql = "INSERT INTO contacts (nom, prenom, email, message) VALUES (:nom, :prenom, :email, :message)";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([
+            ':nom' => $data['nom'],
+            ':prenom' => $data['prenom'],
+            ':email' => $data['email'],
+            ':message' => $data['message']
+        ]);
     }
 }

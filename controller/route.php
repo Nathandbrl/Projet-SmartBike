@@ -33,7 +33,7 @@ switch ($page) {
 
     case 'contact':
         require_once 'controller/contactController.php';
-        $controller = new contactController($pdo);
+        $controller = new ContactController($pdo);
         $controller->index();
         break; 
 
