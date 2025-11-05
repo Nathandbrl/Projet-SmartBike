@@ -4,7 +4,7 @@ require_once __DIR__ . '/../model/bdd.php';
 $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nom = $_POST['nom'] ?? '';
-    $prenom = $_POST['prénom'] ?? '';
+    $prenom = $_POST['prenom'] ?? '';
     $email = $_POST['email'] ?? '';
     $msg = $_POST['message'] ?? '';
     if ($nom && $prenom && $email && $msg) {
@@ -35,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <form action="" method="post">
     <label for="nom">Nom:</label>
     <input type="text" id="nom" name="nom" required>
-    <label for="prénom">Prénom:</label>
-    <input type="text" id="prénom" name="prénom" required>
+    <label for="prenom">Prénom:</label>
+    <input type="text" id="prenom" name="prenom" required>
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required>
     <label for="message">Message:</label>
