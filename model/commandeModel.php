@@ -22,6 +22,8 @@ class Commande
 
         if (!$stmt->execute()) {
             $err = $stmt->errorInfo();
+            var_dump($err);
+            die("Erreur lors de l'insertion");
             throw new Exception('Erreur en base : ' . ($err[2] ?? 'unknown'));
         }
         $res = $stmt->fetch(PDO::FETCH_ASSOC);

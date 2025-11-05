@@ -28,8 +28,13 @@ switch ($page) {
     case 'commander':
         require_once 'controller/commanderController.php';
         $controller = new CommandeController($pdo);
-        $controller->form();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $controller->submit();
+        } else {
+            $controller->form();
+        }
         break;
+    
 
     case 'contact':
         require_once 'controller/contactController.php';
