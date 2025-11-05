@@ -17,6 +17,15 @@ CREATE TABLE commandes (
     date_commande TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE contacts (
+    id SERIAL PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    message TEXT NOT NULL,
+    date_contact TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 INSERT INTO velos (nom, description, prix, photo) VALUES
 ('BikeOne', 
  'Velo de ville, autonomie : 50km, moteur : 250W. Parfait pour la ville !', 
@@ -41,5 +50,6 @@ INSERT INTO velos (nom, description, prix, photo) VALUES
  CREATE INDEX idx_velos_date ON velos(date_ajout DESC);
 CREATE INDEX idx_commandes_date ON commandes(date_commande DESC);
 CREATE INDEX idx_commandes_velo ON commandes(velo_id);
+CREATE INDEX idx_contacts_date ON contacts(date_contact DESC);
 
 SELECT * FROM velos ORDER BY date_ajout DESC;
